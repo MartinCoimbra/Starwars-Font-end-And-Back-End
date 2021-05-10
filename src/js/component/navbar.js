@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-dark mb-3">
+		<nav className="navbar navbar-light bg-dark mb-3 justify-content-between">
 			<Link to="/" className="ml-3">
 				<img
 					width="130px"
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1024px-Star_Wars_Logo.svg.png"
 				/>
 			</Link>
-			<div className="ml-auto">
-				<div classNAme="dropdown">
+			<div className="col-2">
+				<div classNAme="dropdown mb-3">
 					<button
 						className="btn btn-primary dropdown-toggle"
 						type="button"
@@ -19,9 +19,9 @@ export const Navbar = () => {
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false">
-						Dropdown button
+						Favs
 					</button>
-					<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<div className="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
 						<a className="dropdown-item" href="#">
 							Action
 						</a>
