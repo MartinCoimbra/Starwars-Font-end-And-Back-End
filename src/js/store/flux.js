@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -15,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			personas: [],
 			planets: [],
-			fav: []
+			fav: [{ name: "Martin" }, { name: "JoseLuis" }, { name: "Joseasd" }, { name: "Joasdasuis" }]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -34,17 +36,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(true));
 			},
 
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+			setFav: elementoNuevo => {
+				setStore({ fav: elementoNuevo });
+				/* setStore({ fav: elementoNuevo }); */
+				console.log("Me modificare");
+			},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
+			changeColor: (index, color) => {
+				const store = getStore();
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
-
 				//reset the global store
 				setStore({ demo: demo });
 			}

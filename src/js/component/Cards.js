@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
 export function Cards(props) {
+	const { store, actions } = useContext(Context);
+
+	/* const [fav, setFav] = useState([{ name: "Martin" }, { name: "JoseLuis" }]); */
+	/*const { store, actions } = useContext(Context); */
 	return (
 		<div className="col-12 col-sm-6 col-md-3 my-3 my-md-0">
 			<div className="card p-0 m-0">
@@ -13,7 +18,11 @@ export function Cards(props) {
 					<a href="#" className="btn btn-outline-info">
 						Leer mas
 					</a>
-					<button className="btn btn-outline-warning ">
+					<button
+						onClick={() => {
+							actions.setFav([...store.fav, { name: props.name }]);
+						}}
+						className="btn btn-outline-warning ">
 						<i className="far fa-heart" />
 						<i className="fas fa-heart d-none" />
 					</button>
