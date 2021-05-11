@@ -26,7 +26,13 @@ export function Cards(props) {
 					<Link to={"/single/" + props.posicion}>
 						<button
 							onClick={() => {
-								actions.verMas(props.posicion);
+								if (props.planetas == false) {
+									console.log("Quieres un planeta?");
+									actions.verMas2(props.posicion);
+								} else {
+									actions.verMas(props.posicion);
+									console.log("NOOO Quieres un planeta?");
+								}
 							}}
 							className="btn btn-outline-info">
 							<span>Ver mas</span>
@@ -48,5 +54,6 @@ export function Cards(props) {
 Cards.propTypes = {
 	name: PropTypes.string,
 	imgsURL: PropTypes.string,
-	posicion: PropTypes.number
+	posicion: PropTypes.number,
+	planetas: PropTypes.bool
 };

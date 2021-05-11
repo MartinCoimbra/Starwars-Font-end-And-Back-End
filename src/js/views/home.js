@@ -78,7 +78,16 @@ export const Home = () => {
 				<h3 className="text-danger mt-3">Planetas</h3>
 				<div className="d-flex">
 					{store.planets.map((element, i) => {
-						return <Cards key={i} imgsURL={imgsURL2[i].url} name={element.name} imagen={element.imagen} />;
+						return (
+							<Cards
+								key={i}
+								planetas={false}
+								posicion={i}
+								imgsURL={imgsURL2[i].url}
+								name={element.name}
+								imagen={element.imagen}
+							/>
+						);
 					})}
 				</div>
 			</div>
