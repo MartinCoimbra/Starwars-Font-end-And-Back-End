@@ -17,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			personas: [],
 			planets: [],
-			fav: [{ name: "" }]
+			fav: [{ name: "" }],
+			personaBiog: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -36,6 +37,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(true));
 			},
 
+			verMas: numID => {
+				numID += 1;
+				let linkk = "https://www.swapi.tech/api/people/" + numID;
+				fetch(linkk)
+					.then(resp => resp.json())
+					.then(resp => setStore({ personaBiog: resp.result.properties }))
+					.catch(error => console.log(true));
+			},
 			/* Modificamos osea agregamos (lo usamos en las cards)*/
 			setFav: elementoNuevo => {
 				setStore({ fav: elementoNuevo });

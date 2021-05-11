@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export function Cards(props) {
 	const { store, actions } = useContext(Context);
 	/* HACEMOS UN FEATCH AQUI???? o lo importamos??*/
+	/* segun la variable posicion le mandamos x datos */
 
 	return (
 		<div className="col-12 col-sm-6 col-md-3 my-3 my-md-0">
@@ -21,10 +22,14 @@ export function Cards(props) {
 					<h5 className="card-title text-center">{props.name}</h5>
 				</div>
 				<div className="card-footer d-flex justify-content-between">
-					{/* Aqui editamos  le pasamos el id de quien somos, intentemos imprimir el nomrbe */}
-					<Link to="/single/0">
-						<button className="btn btn-outline-info">
-							<span>Link to</span>
+					{/* Aqui editamos  le pasamos el id de quien somos, intentemos imprimir el nomrbe al hacer click segun la id que le mandamos*/}
+					<Link to={"/single/" + props.posicion}>
+						<button
+							onClick={() => {
+								actions.verMas(props.posicion);
+							}}
+							className="btn btn-outline-info">
+							<span>Ver mas</span>
 						</button>
 					</Link>
 					<button
@@ -42,5 +47,6 @@ export function Cards(props) {
 }
 Cards.propTypes = {
 	name: PropTypes.string,
-	imgsURL: PropTypes.string
+	imgsURL: PropTypes.string,
+	posicion: PropTypes.number
 };

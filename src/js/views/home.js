@@ -70,7 +70,7 @@ export const Home = () => {
 				<h3 className="text-danger">Personajes</h3>
 				<div className="d-flex">
 					{store.personas.map((element, i) => {
-						return <Cards key={i} imgsURL={imgsURL[i].url} name={element.name} />;
+						return <Cards key={i} posicion={i} imgsURL={imgsURL[i].url} name={element.name} />;
 					})}
 				</div>
 			</div>

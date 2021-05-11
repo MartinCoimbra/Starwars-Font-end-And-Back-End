@@ -6,6 +6,7 @@ import { Context } from "../store/appContext";
 export const Single = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
+	/* foreach con la posicion que recibimos */
 
 	/* <h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1> */
 	return (
@@ -17,7 +18,7 @@ export const Single = props => {
 					alt="..."
 				/>
 				<div className="card-img-overlay">
-					<h5 className="card-title h2">Card title</h5>
+					<h5 className="card-title h2">{store.personaBiog.name}</h5>
 					<p className="card-text">
 						This is a wider card with supporting text below as a natural lead-in to additional content. This
 						content is a little bit longer. This is a wider card with supporting text below as a natural
