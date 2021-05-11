@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export const Navbar = props => {
 	return (
-		<div className="bg-dark">
+		<div className="fondoNavYfot">
 			<nav className=" container navbar navbar-light mb-3 justify-content-between">
 				<Link to="/" className="ml-3">
 					<img
@@ -12,6 +12,7 @@ export const Navbar = props => {
 						src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1024px-Star_Wars_Logo.svg.png"
 					/>
 				</Link>
+				<h1>Que la Fuerza te acompañe</h1>
 				<div className="col-2 text-right">
 					<div classNAme="dropdown mb-3">
 						<button
