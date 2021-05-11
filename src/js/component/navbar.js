@@ -12,7 +12,7 @@ export const Navbar = props => {
 						src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1024px-Star_Wars_Logo.svg.png"
 					/>
 				</Link>
-				<h1>Que la Fuerza te acompañe</h1>
+				<h1 className="text-warning">Que la fuerza te acompañe</h1>
 				<div className="col-2 text-right">
 					<div classNAme="dropdown mb-3">
 						<button
