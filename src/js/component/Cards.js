@@ -31,12 +31,11 @@ export function Cards(props) {
 						<button
 							onClick={() => {
 								if (props.planetas == false) {
-									console.log("Quieres un planeta?");
 									actions.verMas2(props.posicion);
 								} else {
 									actions.verMas(props.posicion);
-									console.log("NOOO Quieres un planeta?");
 								}
+								actions.posicionFlux(props.posicion);
 							}}
 							className="btn btn-outline-info">
 							<span>Ver mas</span>

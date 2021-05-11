@@ -9,7 +9,15 @@ export const Single = props => {
 	return (
 		<div className="container">
 			<div className="card bg-dark text-white mb-3">
-				<img src={store.imgPersonas[3].url} className="card-img" alt="..." />
+				<img
+					src={
+						store.cambio == true
+							? store.imgPersonas[store.posicionimg].url
+							: store.imgPlanetas[store.posicionimg].url
+					}
+					className="card-img"
+					alt="..."
+				/>
 				<div className="card-img-overlay">
 					<h5 className="card-title h2">
 						{store.cambio == true ? store.personaBiog.name : store.planetBiog.name}
@@ -71,8 +79,4 @@ export const Single = props => {
 			</div>
 		</div>
 	);
-};
-
-Single.propTypes = {
-	match: PropTypes.object
 };

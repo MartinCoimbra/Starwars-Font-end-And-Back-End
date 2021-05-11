@@ -21,6 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personaBiog: [],
 			cambio: true,
 			planetBiog: [],
+			posicionimg: 0,
 			imgPersonas: [
 				{
 					url:
@@ -114,6 +115,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(resp => setStore({ planetBiog: resp.result.properties }))
 					.catch(error => console.log(true));
+			},
+			/* Modificamos direccion de la imagen */
+			posicionFlux: numPos => {
+				setStore({ posicionimg: numPos });
 			},
 			/* Modificamos osea agregamos (lo usamos en las cards)*/
 			setFav: elementoNuevo => {
