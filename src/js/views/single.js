@@ -9,11 +9,7 @@ export const Single = props => {
 	return (
 		<div className="container">
 			<div className="card bg-dark text-white mb-3">
-				<img
-					src="https://i.pinimg.com/originals/3f/7e/89/3f7e893efe4cc037c20b1f742a0da2ce.jpg"
-					className="card-img"
-					alt="..."
-				/>
+				<img src={store.imgPersonas[3].url} className="card-img" alt="..." />
 				<div className="card-img-overlay">
 					<h5 className="card-title h2">
 						{store.cambio == true ? store.personaBiog.name : store.planetBiog.name}

@@ -13,7 +13,11 @@ export function Cards(props) {
 			<div className="card p-0 m-0 mb-3">
 				{/* Le ponemos esto para que no pese tanto por mi laptop, luego le ponemos {props.imgsURL} */}
 				<img
-					src="https://i.pinimg.com/originals/3f/7e/89/3f7e893efe4cc037c20b1f742a0da2ce.jpg"
+					src={
+						props.planetas == false
+							? store.imgPlanetas[props.posicion].url
+							: store.imgPersonas[props.posicion].url
+					}
 					className="card-img-top w-100 "
 					height="170px"
 					alt="..."
