@@ -36,31 +36,31 @@ export const Single = props => {
 						<div className="col-2">
 							{store.cambio == true ? "Año de nacimiento:" : "Climate"}
 							<span className="d-block text-white">
-								{store.cambio == true ? store.personaBiog.birth_year : ""}
+								{store.cambio == true ? store.personaBiog.birth_year : store.planetBiog.climate}
 							</span>
 						</div>
 						<div className="col-2">
-							{store.cambio == true ? "Genero:" : "Popularidad:"}
+							{store.cambio == true ? "Genero:" : "Habitantes:"}
 							<span className="d-block text-white">
-								{store.cambio == true ? store.personaBiog.gender : ""}
+								{store.cambio == true ? store.personaBiog.gender : store.planetBiog.population}
 							</span>
 						</div>
 						<div className="col-2">
 							{store.cambio == true ? "Altura:" : "Periodo orbital:"}
 							<span className="d-block text-white">
-								{store.cambio == true ? store.personaBiog.height : ""}
+								{store.cambio == true ? store.personaBiog.height : store.planetBiog.orbital_period}
 							</span>
 						</div>
 						<div className="col-2">
 							{store.cambio == true ? "Skin:" : "Rotation Period:"}
 							<span className="d-block text-white">
-								{store.cambio == true ? store.personaBiog.skin_color : ""}
+								{store.cambio == true ? store.personaBiog.skin_color : store.planetBiog.rotation_period}
 							</span>
 						</div>
 						<div className="col-2">
-							{store.cambio == true ? "Color de ojos::" : "Dinameter:"}
+							{store.cambio == true ? "Color de ojos::" : "Diameter:"}
 							<span className="d-block text-white">
-								{store.cambio == true ? store.personaBiog.hair_color : ""}
+								{store.cambio == true ? store.personaBiog.hair_color : store.planetBiog.diameter}
 							</span>
 						</div>
 						<div className="col-12 my-4">
