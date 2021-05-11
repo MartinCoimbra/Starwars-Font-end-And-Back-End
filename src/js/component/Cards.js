@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export function Cards(props) {
 	const { store, actions } = useContext(Context);
@@ -19,9 +20,12 @@ export function Cards(props) {
 					<h5 className="card-title text-center">{props.name}</h5>
 				</div>
 				<div className="card-footer d-flex justify-content-between">
-					<a href="#" className="btn btn-outline-info">
-						Leer mas
-					</a>
+					{/* Aqui editamos */}
+					<Link to="/single/0">
+						<button className="btn btn-outline-info">
+							<span>Link to</span>
+						</button>
+					</Link>
 					<button
 						onClick={() => {
 							actions.setFav([...store.fav, { name: props.name }]);

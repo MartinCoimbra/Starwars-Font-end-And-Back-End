@@ -63,6 +63,7 @@ export const Home = () => {
 		{ url: "https://i.pinimg.com/originals/5d/d7/12/5dd7125a673297c84b88fc526d5b515e.jpg" },
 		{ url: "https://pm1.narvii.com/6594/9a9044c1ef56788efcbe4b4015043a306b49ece6_hq.jpg" }
 	]);
+
 	return (
 		<div className="container mt-5">
 			<div className="overflow-x">
