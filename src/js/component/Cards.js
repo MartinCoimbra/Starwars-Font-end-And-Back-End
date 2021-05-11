@@ -5,12 +5,16 @@ import { Context } from "../store/appContext";
 export function Cards(props) {
 	const { store, actions } = useContext(Context);
 
-	/* const [fav, setFav] = useState([{ name: "Martin" }, { name: "JoseLuis" }]); */
-	/*const { store, actions } = useContext(Context); */
 	return (
 		<div className="col-12 col-sm-6 col-md-3 my-3 my-md-0">
 			<div className="card p-0 m-0">
-				<img src={props.urlimg} className="card-img-top w-100 " alt="..." />
+				{/* Le ponemos esto para que no pese tanto por mi laptop, luego le ponemos {props.imgsURL} */}
+				<img
+					src="https://i.pinimg.com/originals/3f/7e/89/3f7e893efe4cc037c20b1f742a0da2ce.jpg"
+					className="card-img-top w-100 "
+					height="170px"
+					alt="..."
+				/>
 				<div className="card-body">
 					<h5 className="card-title text-center">{props.name}</h5>
 				</div>
@@ -33,5 +37,5 @@ export function Cards(props) {
 }
 Cards.propTypes = {
 	name: PropTypes.string,
-	urlimg: PropTypes.string
+	imgsURL: PropTypes.string
 };

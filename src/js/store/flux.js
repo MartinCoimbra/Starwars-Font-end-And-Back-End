@@ -36,11 +36,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(true));
 			},
 
-			/* Modificamos osea agregamos */
+			/* Modificamos osea agregamos (lo usamos en las cards)*/
 			setFav: elementoNuevo => {
 				setStore({ fav: elementoNuevo });
 			},
-			/* Borramos elemento */
+			/* Borramos elemento (lo usamos en el nav bar) */
 			setBorrarIDElement: idelement => {
 				const store = getStore();
 				let newArray = [];
