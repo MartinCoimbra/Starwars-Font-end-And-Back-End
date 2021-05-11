@@ -29,12 +29,25 @@ export const Single = props => {
 					</p>
 					<p className="card-text">Last updated 3 mins ago</p>
 					<div className="row position-absolute fixed-bottom border-top border-danger text-danger text-center">
-						<div className="col-2">:D</div>
-						<div className="col-2">:D</div>
-						<div className="col-2">:D</div>
-						<div className="col-2">:D</div>
-						<div className="col-2">:D</div>
-						<div className="col-2">:D</div>
+						<div className="col-2">
+							Nombre: <span className="d-block text-white">{store.personaBiog.name}</span>{" "}
+						</div>
+						<div className="col-2">
+							Año de nacimiento:{" "}
+							<span className="d-block text-white">{store.personaBiog.birth_year}</span>
+						</div>
+						<div className="col-2">
+							Genero: <span className="d-block text-white">{store.personaBiog.gender}</span>
+						</div>
+						<div className="col-2">
+							Altura: <span className="d-block text-white">{store.personaBiog.height}</span>
+						</div>
+						<div className="col-2">
+							Skin: <span className="d-block text-white">{store.personaBiog.skin_color}</span>
+						</div>
+						<div className="col-2">
+							Color de ojos: <span className="d-block text-white">{store.personaBiog.hair_color}</span>
+						</div>
 						<div className="col-12 my-4">
 							<Link to="/">
 								<span className="btn btn-primary btn-lg" href="#" role="button">
