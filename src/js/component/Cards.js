@@ -10,7 +10,7 @@ export function Cards(props) {
 
 	return (
 		<div className="col-12 col-sm-6 col-md-3 my-3 my-md-0">
-			<div className="card p-0 m-0 mb-3">
+			<div className="card p-0 m-0 mb-3 cardBG text-white">
 				{/* Le ponemos esto para que no pese tanto por mi laptop, luego le ponemos {props.imgsURL} */}
 				<img
 					src={
@@ -25,7 +25,7 @@ export function Cards(props) {
 				<div className="card-body">
 					<h5 className="card-title text-center">{props.name}</h5>
 				</div>
-				<div className="card-footer d-flex justify-content-between">
+				<div className="card-footer cardBG2 d-flex justify-content-between">
 					{/* Aqui editamos  le pasamos el id de quien somos, intentemos imprimir el nomrbe al hacer click segun la id que le mandamos*/}
 					<Link to={"/single/" + props.posicion}>
 						<button
@@ -37,7 +37,7 @@ export function Cards(props) {
 								}
 								actions.posicionFlux(props.posicion);
 							}}
-							className="btn btn-outline-info">
+							className="btn btn-outline-dark">
 							<span>Ver mas</span>
 						</button>
 					</Link>

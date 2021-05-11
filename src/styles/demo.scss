@@ -1,1 +1,25 @@
 @import "~bootstrap/scss/bootstrap.scss";
+.cardBG{
+    background-color: rgb(20, 20, 20);
+}
+.cardBG2{
+    background-color: #000000a8;
+}
+.desenfoque{
+    color: #000000;
+    font-weight: bold;
+    backdrop-filter: blur(6px);
+}
+.borderG{
+    border: solid 4px #4a4750;
+}
+.fondoBiog{
+    width: 40%;
+    backdrop-filter: blur(10px);
+}
+body{
+    background: url("https://cdn.hipwallpaper.com/i/80/63/c7lgbq.png");
+}
+.blancomasOpaco{
+    color: #7078e4;
+}
