@@ -12,10 +12,10 @@ export const Navbar = props => {
 						src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1024px-Star_Wars_Logo.svg.png"
 					/>
 				</Link>
-				<div className="col-2">
+				<div className="col-2 text-right">
 					<div classNAme="dropdown mb-3">
 						<button
-							className="btn btn-primary dropdown-toggle"
+							className="btn btn-outline-warning dropdown-toggle"
 							type="button"
 							id="dropdownMenuButton"
 							data-toggle="dropdown"
@@ -23,13 +23,24 @@ export const Navbar = props => {
 							aria-expanded="false">
 							Favs
 						</button>
-						<div className="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
+						<div className="dropdown-menu mt-3 " aria-labelledby="dropdownMenuButton">
 							{props.fav.map((element, i) => {
-								return (
-									<a key={i} className="dropdown-item" href="#">
-										{element.name}
-									</a>
-								);
+								if (element.name !== "") {
+									return (
+										<p
+											key={i}
+											className="dropdown-item liS d-flex justify-content-between"
+											href="#">
+											<p className="m-0">{element.name}</p>
+											<i
+												onClick={() => {
+													console.log("HOLI DDDDD");
+												}}
+												className="far fa-trash-alt mt-1 oculOAP text-danger"
+											/>
+										</p>
+									);
+								}
 							})}
 						</div>
 					</div>

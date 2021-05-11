@@ -1,1 +1,10 @@
 @import "~bootstrap/scss/bootstrap.scss";
+.oculOAP{
+     cursor: pointer;
+        display: none;
+}
+.liS:hover{
+    .oculOAP{
+        display: block;
+    }
+}
