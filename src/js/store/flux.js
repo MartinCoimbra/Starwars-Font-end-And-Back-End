@@ -36,12 +36,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(true));
 			},
 
+			/* Modificamos osea agregamos */
 			setFav: elementoNuevo => {
 				setStore({ fav: elementoNuevo });
-				/* setStore({ fav: elementoNuevo }); */
-				console.log("Me modificare");
+			},
+			/* Borramos elemento */
+			setBorrarIDElement: idelement => {
+				const store = getStore();
+				let newArray = [];
+				store.fav.filter(function(element, i) {
+					if (i !== idelement) {
+						newArray.push(element);
+					}
+				});
+				setStore({ fav: newArray });
 			},
 
+			/* Ejemplo */
 			changeColor: (index, color) => {
 				const store = getStore();
 				const demo = store.demo.map((elm, i) => {

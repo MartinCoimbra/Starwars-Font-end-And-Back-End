@@ -19,9 +19,6 @@ const injectContext = PassedComponent => {
 			})
 		);
 
-		const [fav, setFav] = useState([{ name: "Martin" }, { name: "JoseLuis" }]);
-		console.log("HEYYYYY" + fav);
-
 		useEffect(() => {
 			state.actions.loadSomeData();
 		}, []);

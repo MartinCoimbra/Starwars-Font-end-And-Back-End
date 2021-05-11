@@ -34,7 +34,7 @@ export const Navbar = props => {
 											<p className="m-0">{element.name}</p>
 											<i
 												onClick={() => {
-													console.log("HOLI DDDDD");
+													props.setBorrarIDElement(i);
 												}}
 												className="far fa-trash-alt mt-1 oculOAP text-danger"
 											/>
@@ -51,5 +51,6 @@ export const Navbar = props => {
 };
 
 Navbar.propTypes = {
-	fav: PropTypes.object
+	fav: PropTypes.object,
+	setBorrarIDElement: PropTypes.func
 };

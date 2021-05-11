@@ -19,7 +19,7 @@ const Layout = () => {
 		<div className=" flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar fav={store.fav} />
+					<Navbar fav={store.fav} setBorrarIDElement={actions.setBorrarIDElement} />
 					<Switch>
 						<Route exact path="/">
 							<Home />
