@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
+import { Context } from "../store/appContext";
 export const Navbar = props => {
+	const { store, actions } = useContext(Context);
+
 	return (
-		<div className="fondoNavYfot">
+		<div className="fondoNavYfot fixed-top">
 			<nav className=" container navbar navbar-light mb-3 justify-content-between">
 				<Link to="/" className="ml-3">
 					<img
@@ -14,7 +17,7 @@ export const Navbar = props => {
 				</Link>
 				<h1 className="text-warning">Que la fuerza te acompañe</h1>
 				<div className="col-2 text-right">
-					<div classNAme="dropdown mb-3">
+					<div classNAme="dropdown">
 						<button
 							className="btn btn-outline-warning dropdown-toggle"
 							type="button"
@@ -22,7 +25,7 @@ export const Navbar = props => {
 							data-toggle="dropdown"
 							aria-haspopup="true"
 							aria-expanded="false">
-							Favs
+							<p className="d-flex p-0 m-0">Favs {store.fav.length - 1}</p>
 						</button>
 						<div className="dropdown-menu mt-3 " aria-labelledby="dropdownMenuButton">
 							{props.fav.map((element, i) => {

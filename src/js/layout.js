@@ -16,7 +16,7 @@ const Layout = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className=" flex-column">
+		<div className=" flex-column pt-5 mt-5">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar fav={store.fav} setBorrarIDElement={actions.setBorrarIDElement} />
