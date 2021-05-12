@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 export function Cards(props) {
 	const { store, actions } = useContext(Context);
-	/* HACEMOS UN FEATCH AQUI???? o lo importamos??*/
-	/* segun la variable posicion le mandamos x datos */
 
 	return (
 		<div className="col-12 col-sm-6 col-md-3 my-3 my-md-0">
