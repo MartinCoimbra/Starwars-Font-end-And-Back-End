@@ -7,7 +7,7 @@ export const Single = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	return (
-		<div className="container">
+		<div className="container mt-4">
 			<div className="card bg-dark text-white mb-3">
 				<img
 					src={

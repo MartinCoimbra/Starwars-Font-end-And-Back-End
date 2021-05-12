@@ -8,7 +8,7 @@ export const Navbar = props => {
 
 	return (
 		<div className="fondoNavYfot fixed-top">
-			<nav className=" container navbar navbar-light mb-3 justify-content-between">
+			<nav className=" container navbar navbar-light mb-0 justify-content-between">
 				<Link to="/" className="ml-3">
 					<img
 						width="130px"
