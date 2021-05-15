@@ -24,8 +24,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			posicionimg: 0,
 			imgPersonas: [
 				{
-					url:
-						"https://i2.wp.com/www.lafosadelrancor.com/wp-content/uploads/2021/02/luke-retorno-de-jedi-lista-cortada_widelg.jpg?resize=678%2C381&ssl=1"
+					url: "https://i.pinimg.com/originals/a1/93/e9/a193e9ec775e428f2ed2aabead1bed65.gif"
+					/* https://i2.wp.com/www.lafosadelrancor.com/wp-content/uploads/2021/02/luke-retorno-de-jedi-lista-cortada_widelg.jpg?resize=678%2C381&ssl=1 */
 				},
 				{
 					url:
@@ -45,7 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					url:
-						"http://1.bp.blogspot.com/_wIW55V-xC00/Sy_eNc3mGfI/AAAAAAAACts/xXvuorug67g/s280/beru+joven+2.jpg"
+						"https://64.media.tumblr.com/3bdf1888fce8995109dcc1ab7e5bdef2/tumblr_p239cvnYP91uvgw2oo3_250.gifv"
+					/* http://1.bp.blogspot.com/_wIW55V-xC00/Sy_eNc3mGfI/AAAAAAAACts/xXvuorug67g/s280/beru+joven+2.jpg */
 				},
 				{
 					url:
