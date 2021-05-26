@@ -11,11 +11,15 @@ export const Navbar = props => {
 			<nav className=" container navbar navbar-light mb-0 justify-content-between">
 				<Link to="/" className="ml-3">
 					<img
-						width="130px"
+						width="110px"
+						height="55px"
 						src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1024px-Star_Wars_Logo.svg.png"
 					/>
 				</Link>
 				<h1 className="text-warning">Que la fuerza te acompañe</h1>
+				<Link to="/login" className="ml-3">
+					<button className="btn btn-primary">Login</button>
+				</Link>
 				<div className="col-2 text-right">
 					<div classNAme="dropdown">
 						<button
