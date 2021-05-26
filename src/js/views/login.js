@@ -6,6 +6,9 @@ import "../../styles/demo.scss";
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 
+	/* Para leer el token:
+    * getItem()    Muchas gracias Dieguito!!!!
+    */
 	return (
 		<div className="container">
 			<div className="card bg-dark text-white">
@@ -15,9 +18,11 @@ export const Login = () => {
 					alt="..."
 				/>
 				<div className="card-img-overlay login col-5">
-					<h3 className="card-title text-center mt-5 mb-5">Sing Up</h3>
+					<h3 className="card-title text-center mt-5 mb-5">Sign in</h3>
 					<p className="card-text text-left pt-2">Email:</p>
 					<input
+						onChange={actions.loginData}
+						name="email"
 						type="text"
 						className="form-control"
 						placeholder="Email"
@@ -26,6 +31,8 @@ export const Login = () => {
 					/>
 					<p className="card-text mt-5">Password</p>
 					<input
+						name="password"
+						onChange={actions.loginData}
 						type="password"
 						className="form-control"
 						placeholder="********"
@@ -33,7 +40,9 @@ export const Login = () => {
 						aria-describedby="basic-addon1"
 					/>
 					<div className="text-right mt-2">
-						<button className="btn btn-primary mr-2">Login</button>
+						<button onClick={() => actions.login()} className="btn btn-primary mr-2">
+							Login
+						</button>
 						<Link to="/">
 							<button className="btn btn-secondary">Cancel</button>
 						</Link>

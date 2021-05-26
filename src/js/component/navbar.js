@@ -18,7 +18,7 @@ export const Navbar = props => {
 				</Link>
 				<h1 className="text-warning">Que la fuerza te acompañe</h1>
 				<Link to="/login" className="ml-3">
-					<button className="btn btn-primary">Login</button>
+					<button className="btn btn-primary">Sign in</button>
 				</Link>
 				<div className="col-2 text-right">
 					<div classNAme="dropdown">

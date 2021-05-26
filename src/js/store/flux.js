@@ -22,6 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cambio: true,
 			planetBiog: [],
 			posicionimg: 0,
+			loginData: {},
 			imgPersonas: [
 				{
 					url:
@@ -93,6 +94,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(resp => setStore({ planets: resp.results }))
 					.catch(error => console.log(true));
+			},
+			login: () => {
+				const dataEnviar = getStore().loginData;
+				fetch("https://3001-magenta-alpaca-svm6cni0.ws-us07.gitpod.io/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+						/* Authorization : myToken */
+					},
+					body: JSON.stringify(dataEnviar)
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						console.log(resp);
+						localStorage.setItem("token", resp.token);
+					})
+					.catch(error => console.log(true));
+			},
+			loginData: e => {
+				let dataCapt = { [e.target.name]: e.target.value };
+				setStore({ loginData: { ...getStore().loginData, ...dataCapt } });
 			},
 			/* Personas */
 			verMas: numID => {
