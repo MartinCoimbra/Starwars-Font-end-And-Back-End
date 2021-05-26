@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetBiog: [],
 			posicionimg: 0,
 			loginData: {},
+			logeado: false,
 			imgPersonas: [
 				{
 					url:
@@ -103,12 +104,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 						/* Authorization : myToken */
 					},
-					body: JSON.stringify(dataEnviar)
+					body: JSON.stringify(dataEnviar) //Convertimos la data a JSON
 				})
 					.then(resp => resp.json())
 					.then(resp => {
-						console.log(resp);
+						/* Guardamos el token en el localStorage */
 						localStorage.setItem("token", resp.token);
+						if (resp.token) {
+							setStore({ logeado: true });
+						}
 					})
 					.catch(error => console.log(true));
 			},

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 
@@ -40,8 +40,13 @@ export const Login = () => {
 						aria-describedby="basic-addon1"
 					/>
 					<div className="text-right mt-2">
-						<button onClick={() => actions.login()} className="btn btn-primary mr-2">
+						<button
+							onClick={() => {
+								actions.login();
+							}}
+							className="btn btn-primary mr-2">
 							Login
+							{store.logeado ? <Redirect to="/" /> : ""}
 						</button>
 						<Link to="/">
 							<button className="btn btn-secondary">Cancel</button>
