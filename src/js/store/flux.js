@@ -59,6 +59,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						resp.favoritosPlanets.map((element, i) => {
 							setStore({ favoritos: [...getStore().favoritos, { name: element.postplanets.name }] });
 						});
+						resp.favoritosPersons.map((element, i) => {
+							setStore({ favoritos: [...getStore().favoritos, { name: element.postpersons.name }] });
+						});
 						console.log(getStore().favoritos);
 					})
 					.catch(error => console.log(error));
@@ -69,7 +72,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
-						/* Authorization : myToken */
 					},
 					body: JSON.stringify(dataEnviar) //Convertimos la data a JSON
 				})

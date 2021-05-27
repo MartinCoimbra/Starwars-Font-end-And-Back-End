@@ -35,7 +35,7 @@ export const Navbar = props => {
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false">
-								<p className="d-flex p-0 m-0">Favs {store.fav.length - 1}</p>
+								<p className="d-flex p-0 m-0">Favs {store.favoritos.length}</p>
 							</button>
 							<div className="dropdown-menu mt-3 " aria-labelledby="dropdownMenuButton">
 								{store.favoritos.map((element, i) => {
