@@ -98,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: () => {
 				const dataEnviar = getStore().loginData;
-				fetch("https://3001-magenta-alpaca-svm6cni0.ws-us07.gitpod.io/login", {
+				fetch("https://3001-emerald-whippet-pypm8p30.ws-us07.gitpod.io/login", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => {
 						/* Guardamos el token en el localStorage */
 						localStorage.setItem("token", resp.token);
-						if (resp.token) {
+						if (resp.token !== undefined) {
 							setStore({ logeado: true });
 						}
 					})

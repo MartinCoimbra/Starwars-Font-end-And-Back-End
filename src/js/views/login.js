@@ -46,7 +46,7 @@ export const Login = () => {
 							}}
 							className="btn btn-primary mr-2">
 							Login
-							{store.logeado ? <Redirect to="/" /> : ""}
+							{store.logeado == true ? <Redirect to="/" /> : ""}
 						</button>
 						<Link to="/">
 							<button className="btn btn-secondary">Cancel</button>
