@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log(true));
 			},
-			loadDataFavs: () => {
+			loadDataFavs: fav => {
 				fetch(process.env.BACKEND_URL + "/user/favoritos", {
 					method: "GET",
 					headers: {
@@ -56,12 +56,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(resp => resp.json())
 					.then(resp => {
+						if (fav === true) {
+							/* limpiar favoritos*/
+							setStore({ favoritos: [] });
+						}
 						resp.favoritosPlanets.map((element, i) => {
 							setStore({ favoritos: [...getStore().favoritos, { name: element.postplanets.name }] });
 						});
 						resp.favoritosPersons.map((element, i) => {
 							setStore({ favoritos: [...getStore().favoritos, { name: element.postpersons.name }] });
 						});
+
 						console.log(getStore().favoritos);
 					})
 					.catch(error => console.log(error));
@@ -114,34 +119,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log(error));
 			},
-			/* Personas */
-			verMas: numID => {
-				numID += 1;
-				setStore({ cambio: true });
-				let linkk = "https://www.swapi.tech/api/people/" + numID;
-				fetch(linkk)
-					.then(resp => resp.json())
-					.then(resp => setStore({ personaBiog: resp.result.properties }))
-					.catch(error => console.log(true));
-			},
-			/* Planetas */
-			verMas2: numID => {
-				numID += 1;
-				setStore({ cambio: false });
-				let linkk = "https://www.swapi.tech/api/planets/" + numID;
-				fetch(linkk)
-					.then(resp => resp.json())
-					.then(resp => setStore({ planetBiog: resp.result.properties }))
-					.catch(error => console.log(true));
-			},
-			/* Modificamos direccion de la imagen */
+			/* posicion */
 			posicionFlux: numPos => {
 				setStore({ posicion: numPos });
 			},
-			/* Modificamos osea agregamos (lo usamos en las cards)*/
-			setFav: elementoNuevo => {
-				setStore({ fav: elementoNuevo });
+			/* Agregamos personas */
+			setFavPerson: numPost => {
+				fetch(process.env.BACKEND_URL + "/user/favoritos/person/" + numPost, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: localStorage.getItem("token")
+					}
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						getActions().loadDataFavs(true);
+						console.log(resp); /* if(resp=="ACCESS DENIED") */
+					})
+					.catch(error => console.log(error));
 			},
+			serFavPlanet: numPost => {
+				fetch(process.env.BACKEND_URL + "/user/favoritos/planet/" + numPost, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: localStorage.getItem("token")
+					}
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						getActions().loadDataFavs(true);
+						console.log(resp); /* if(resp=="ACCESS DENIED") */
+					})
+					.catch(error => console.log(error));
+			},
+
 			/* Borramos elemento (lo usamos en el nav bar) */
 			setBorrarIDElement: idelement => {
 				const store = getStore();

@@ -28,11 +28,6 @@ export function Cards(props) {
 					<Link to={"/single/" + props.posicion}>
 						<button
 							onClick={() => {
-								if (props.planetas == false) {
-									actions.verMas2(props.posicion);
-								} else {
-									actions.verMas(props.posicion);
-								}
 								actions.posicionFlux(props.posicion);
 							}}
 							className="btn btn-outline-dark">
@@ -41,7 +36,10 @@ export function Cards(props) {
 					</Link>
 					<button
 						onClick={() => {
-							actions.setFav([...store.fav, { name: props.name }]);
+							/* para agregar neceitamos el numero del post */
+							props.planetas == false
+								? actions.serFavPlanet(props.posicion)
+								: actions.setFavPerson(props.posicion);
 						}}
 						className="btn btn-outline-warning ">
 						<i className="far fa-heart" />
