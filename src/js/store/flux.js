@@ -127,9 +127,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			signupData: e => {
 				let dataCapt = { [e.target.name]: e.target.value };
 				setStore({ signupData: { ...getStore().signupData, ...dataCapt } });
+				/* setStore({ loginData: { ...getStore().loginData, ...emailypass } }); */
 			},
 			signup: () => {
+				console.log("entre a primera fase");
+
+				let emailypass = { email: getStore().signupData.email, password: getStore().signupData.password };
+				setStore({ loginData: emailypass });
 				const dataEnviar = getStore().signupData;
+				console.log("sigo aqui");
+
 				fetch(process.env.BACKEND_URL + "/user", {
 					method: "POST",
 					headers: {
@@ -139,9 +146,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(resp => resp.json())
 					.then(resp => {
-						console.log(resp);
+						console.log("entre" + resp), getActions().login();
 					})
-					.catch(error => console.log(true));
+					.catch(error => console.log(error));
 			},
 			/* Personas */
 			verMas: numID => {

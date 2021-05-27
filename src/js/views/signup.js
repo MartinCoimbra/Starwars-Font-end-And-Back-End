@@ -76,6 +76,7 @@ export const Signup = () => {
 						<button
 							onClick={() => {
 								actions.signup();
+								console.log("click");
 							}}
 							className="btn btn-success mr-2">
 							Sign up
