@@ -23,6 +23,7 @@ export const Signup = () => {
 						<div className="col-4">
 							<p className="card-text">First_name:</p>
 							<input
+								onChange={actions.signupData}
 								name="first_name"
 								type="text"
 								className="form-control"
@@ -34,8 +35,9 @@ export const Signup = () => {
 						<div className="col-4">
 							<p className="card-text">Last_name</p>
 							<input
+								onChange={actions.signupData}
 								name="last_name"
-								type="password"
+								type="text"
 								className="form-control"
 								placeholder="last_name"
 								aria-label="last_name"
@@ -47,7 +49,7 @@ export const Signup = () => {
 						<div className="col-4">
 							<p className="card-text">Email:</p>
 							<input
-								onChange={actions.loginData}
+								onChange={actions.signupData}
 								name="email"
 								type="text"
 								className="form-control"
@@ -59,8 +61,8 @@ export const Signup = () => {
 						<div className="col-4">
 							<p className="card-text">Password</p>
 							<input
+								onChange={actions.signupData}
 								name="password"
-								onChange={actions.loginData}
 								type="password"
 								className="form-control"
 								placeholder="********"
@@ -73,7 +75,7 @@ export const Signup = () => {
 					<div className="text-center">
 						<button
 							onClick={() => {
-								actions.login();
+								actions.signup();
 							}}
 							className="btn btn-success mr-2">
 							Sign up

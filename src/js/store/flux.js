@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetBiog: [],
 			posicionimg: 0,
 			loginData: {},
+			signupData: {},
 			logeado: false,
 			infoProfile: {},
 			imgPersonas: [
@@ -99,7 +100,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: () => {
 				const dataEnviar = getStore().loginData;
-				fetch("https://3001-emerald-whippet-pypm8p30.ws-us07.gitpod.io/login", {
+				fetch(process.env.BACKEND_URL + "/login", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -121,6 +122,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loginData: e => {
 				let dataCapt = { [e.target.name]: e.target.value };
 				setStore({ loginData: { ...getStore().loginData, ...dataCapt } });
+			},
+			/* POST REGISTRO */
+			signupData: e => {
+				let dataCapt = { [e.target.name]: e.target.value };
+				setStore({ signupData: { ...getStore().signupData, ...dataCapt } });
+			},
+			signup: () => {
+				const dataEnviar = getStore().signupData;
+				fetch(process.env.BACKEND_URL + "/user", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(dataEnviar)
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						console.log(resp);
+					})
+					.catch(error => console.log(true));
 			},
 			/* Personas */
 			verMas: numID => {
