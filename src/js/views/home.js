@@ -7,9 +7,6 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-	useEffect(() => {
-		console.log(store.personas);
-	});
 
 	return (
 		<div className="container mt-5">

@@ -38,7 +38,7 @@ export const Navbar = props => {
 								<p className="d-flex p-0 m-0">Favs {store.fav.length - 1}</p>
 							</button>
 							<div className="dropdown-menu mt-3 " aria-labelledby="dropdownMenuButton">
-								{props.fav.map((element, i) => {
+								{store.favoritos.map((element, i) => {
 									if (element.name !== "") {
 										return (
 											<p

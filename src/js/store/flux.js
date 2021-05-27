@@ -15,12 +15,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			personas: [],
 			personas2: [],
-			planets: [],
 			planets2: [],
 			fav: [{ name: "" }],
-			personaBiog: [],
+			favoritos: [],
 			cambio: true,
 			planetBiog: [],
 			posicion: 0,
@@ -30,20 +28,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			infoProfile: {}
 		},
 		actions: {
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				fetch("https://www.swapi.tech/api/people/")
-					.then(resp => resp.json())
-					.then(resp => setStore({ personas: resp.results }))
-					.catch(error => console.log(true));
-				/* Traemos a los planetas */
-				fetch("https://www.swapi.tech/api/planets/")
-					.then(resp => resp.json())
-					.then(resp => setStore({ planets: resp.results }))
-					.catch(error => console.log(true));
-			},
 			loadDataPersonsYPlanets: () => {
 				/* Las personas */
 				fetch(process.env.BACKEND_URL + "/persons")
@@ -62,6 +46,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log(true));
 			},
+			loadDataFavs: () => {
+				fetch(process.env.BACKEND_URL + "/user/favoritos", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: localStorage.getItem("token")
+					}
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						resp.favoritosPlanets.map((element, i) => {
+							setStore({ favoritos: [...getStore().favoritos, { name: element.postplanets.name }] });
+						});
+						console.log(getStore().favoritos);
+					})
+					.catch(error => console.log(error));
+			},
 			login: () => {
 				const dataEnviar = getStore().loginData;
 				fetch(process.env.BACKEND_URL + "/login", {
@@ -79,9 +80,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (resp.token !== undefined) {
 							setStore({ logeado: true });
 							setStore({ infoProfile: resp.user });
+							getActions().loadDataFavs();
 						}
 					})
-					.catch(error => console.log(true));
+					.catch(error => console.log(error));
 			},
 			loginData: e => {
 				let dataCapt = { [e.target.name]: e.target.value };
@@ -148,17 +150,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				setStore({ fav: newArray });
-			},
-
-			/* Ejemplo */
-			changeColor: (index, color) => {
-				const store = getStore();
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-				//reset the global store
-				setStore({ demo: demo });
 			}
 		}
 	};
