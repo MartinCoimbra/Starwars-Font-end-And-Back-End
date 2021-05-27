@@ -24,6 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			posicionimg: 0,
 			loginData: {},
 			logeado: false,
+			infoProfile: {},
 			imgPersonas: [
 				{
 					url:
@@ -112,6 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("token", resp.token);
 						if (resp.token !== undefined) {
 							setStore({ logeado: true });
+							setStore({ infoProfile: resp.user });
 						}
 					})
 					.catch(error => console.log(true));
