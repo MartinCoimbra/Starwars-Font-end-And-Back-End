@@ -125,6 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			/* Agregamos personas */
 			setFavPerson: numPost => {
+				++numPost;
 				fetch(process.env.BACKEND_URL + "/user/favoritos/person/" + numPost, {
 					method: "POST",
 					headers: {
@@ -140,6 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(error));
 			},
 			serFavPlanet: numPost => {
+				++numPost;
 				fetch(process.env.BACKEND_URL + "/user/favoritos/planet/" + numPost, {
 					method: "POST",
 					headers: {
