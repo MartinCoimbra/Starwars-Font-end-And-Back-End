@@ -16,7 +16,7 @@ export const Home = () => {
 			<div className="overflow-x">
 				<h3 className="text-danger">Personajes</h3>
 				<div className="d-flex">
-					{store.personas.map((element, i) => {
+					{store.personas2.map((element, i) => {
 						return <Cards key={i} posicion={i} name={element.name} />;
 					})}
 				</div>
@@ -24,7 +24,7 @@ export const Home = () => {
 			<div className="overflow-x">
 				<h3 className="text-danger mt-3">Planetas</h3>
 				<div className="d-flex">
-					{store.planets.map((element, i) => {
+					{store.planets2.map((element, i) => {
 						return (
 							<Cards key={i} planetas={false} posicion={i} name={element.name} imagen={element.imagen} />
 						);

@@ -13,8 +13,8 @@ export function Cards(props) {
 				<img
 					src={
 						props.planetas == false
-							? store.imgPlanetas[props.posicion].url
-							: store.imgPersonas[props.posicion].url
+							? store.planets2[props.posicion].foto
+							: store.personas2[props.posicion].foto
 					}
 					className="card-img-top w-100 "
 					height="170px"

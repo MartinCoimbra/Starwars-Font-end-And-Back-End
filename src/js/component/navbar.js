@@ -27,7 +27,7 @@ export const Navbar = props => {
 						</Link>
 					</div>
 					<div className={store.logeado == false ? "d-none" : "d-block"}>
-						<div classNAme="dropdown">
+						<div className="dropdown">
 							<button
 								className="btn btn-outline-warning dropdown-toggle"
 								type="button"
