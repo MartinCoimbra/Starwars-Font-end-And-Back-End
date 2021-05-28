@@ -166,7 +166,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log(error));
 			},
-
 			/* Borramos elemento (lo usamos en el nav bar) */
 			setBorrarIDElement: (idelement, tipo) => {
 				/* con tipo identificamos que tipo es si planet o person */
@@ -186,6 +185,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(resp); /* if(resp=="ACCESS DENIED") */
 					})
 					.catch(error => console.log(error));
+			},
+			actionRemove: () => {
+				localStorage.removeItem("token");
+				setStore({ logeado: false });
+				setStore({ infoProfile: {} });
+				setStore({ favoritos: [] });
 			}
 		}
 	};

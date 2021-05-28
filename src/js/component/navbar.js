@@ -26,37 +26,39 @@ export const Navbar = props => {
 							<button className="btn btn-success">Sign up</button>
 						</Link>
 					</div>
+
 					<div className={store.logeado == false ? "d-none" : "d-block"}>
-						<div className="dropdown">
-							<button
-								className="btn btn-outline-warning dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								<p className="d-flex p-0 m-0">Favs {store.favoritos.length}</p>
-							</button>
-							<div className="dropdown-menu mt-3 " aria-labelledby="dropdownMenuButton">
-								{store.favoritos.map((element, i) => {
-									if (element.name !== "") {
-										return (
-											<p
-												key={i}
-												className="dropdown-item liS d-flex justify-content-between"
-												href="#">
-												<p className="m-0">{element.name}</p>
-												<i
-													onClick={() => {
-														actions.setBorrarIDElement(element.id, element.tipo);
-													}}
-													className="far fa-trash-alt mt-1 oculOAP text-danger"
-												/>
-											</p>
-										);
-									}
-								})}
-							</div>
+						<button onClick={actions.actionRemove} className="btn btn-primary mr-4">
+							Log Out
+						</button>
+						<button
+							className="btn btn-outline-warning dropdown-toggle"
+							type="button"
+							id="dropdownMenuButton"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false">
+							<p className="d-flex p-0 m-0">Favs {store.favoritos.length}</p>
+						</button>
+						<div className="dropdown-menu mt-3 " aria-labelledby="dropdownMenuButton">
+							{store.favoritos.map((element, i) => {
+								if (element.name !== "") {
+									return (
+										<p
+											key={i}
+											className="dropdown-item liS d-flex justify-content-between"
+											href="#">
+											<p className="m-0">{element.name}</p>
+											<i
+												onClick={() => {
+													actions.setBorrarIDElement(element.id, element.tipo);
+												}}
+												className="far fa-trash-alt mt-1 oculOAP text-danger"
+											/>
+										</p>
+									);
+								}
+							})}
 						</div>
 					</div>
 				</div>
