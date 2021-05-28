@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 import { Cards } from "../component/Cards.js";
@@ -9,7 +10,13 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container mt-5">
+		<div className="container mt-3">
+			<div className={store.logeado == false ? "d-none" : "d-block"}>
+				<Link to="/addpost">
+					<button className="btn btn-success mb-3">+ Hacer un post</button>
+				</Link>
+			</div>
+
 			<div className="overflow-x">
 				<h3 className="text-danger">Personajes</h3>
 				<div className="d-flex">

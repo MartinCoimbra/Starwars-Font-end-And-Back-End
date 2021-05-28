@@ -8,6 +8,7 @@ import { Demo } from "./views/demo";
 import { Login } from "./views/login";
 import { Signup } from "./views/signup";
 import { Single } from "./views/single";
+import { Addpost } from "./views/addPost";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -28,6 +29,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<Login />
+						</Route>
+						<Route exact path="/addpost">
+							<Addpost />
 						</Route>
 						<Route exact path="/signup">
 							<Signup />
