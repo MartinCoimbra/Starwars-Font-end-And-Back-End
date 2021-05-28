@@ -61,10 +61,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ favoritos: [] });
 						}
 						resp.favoritosPlanets.map((element, i) => {
-							setStore({ favoritos: [...getStore().favoritos, { name: element.postplanets.name }] });
+							setStore({
+								favoritos: [
+									...getStore().favoritos,
+									{ id: element.postplanets.id, name: element.postplanets.name }
+								]
+							});
 						});
 						resp.favoritosPersons.map((element, i) => {
-							setStore({ favoritos: [...getStore().favoritos, { name: element.postpersons.name }] });
+							setStore({
+								favoritos: [
+									...getStore().favoritos,
+									{ id: element.postpersons.id, name: element.postpersons.name }
+								]
+							});
 						});
 
 						console.log(getStore().favoritos);
@@ -151,22 +161,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(resp => resp.json())
 					.then(resp => {
+						console.log(resp.id); /* if(resp=="ACCESS DENIED") */
 						getActions().loadDataFavs(true);
-						console.log(resp); /* if(resp=="ACCESS DENIED") */
 					})
 					.catch(error => console.log(error));
 			},
 
 			/* Borramos elemento (lo usamos en el nav bar) */
 			setBorrarIDElement: idelement => {
-				const store = getStore();
-				let newArray = [];
-				store.fav.filter(function(element, i) {
-					if (i !== idelement) {
-						newArray.push(element);
+				console.log(idelement);
+				console.log(idelement);
+				console.log(idelement);
+				fetch(process.env.BACKEND_URL + "/user/favoritos/person/" + idelement, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: localStorage.getItem("token")
 					}
-				});
-				setStore({ fav: newArray });
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						getActions().loadDataFavs(true);
+						console.log(resp); /* if(resp=="ACCESS DENIED") */
+					})
+					.catch(error => console.log(error));
 			}
 		}
 	};

@@ -41,7 +41,7 @@ export function Cards(props) {
 								? actions.serFavPlanet(props.posicion)
 								: actions.setFavPerson(props.posicion);
 						}}
-						className="btn btn-outline-warning ">
+						className={store.logeado ? "btn btn-outline-warning" : "d-none"}>
 						<i className="far fa-heart" />
 						<i className="fas fa-heart d-none" />
 					</button>
