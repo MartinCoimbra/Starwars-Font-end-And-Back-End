@@ -8,6 +8,7 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	const [aux, setAux] = useState();
 
 	return (
 		<div className="container mt-3">

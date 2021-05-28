@@ -25,11 +25,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loginData: {},
 			signupData: {},
 			logeado: false,
-			infoProfile: {}
+			infoProfile: {},
+			datapostcard: {},
+			postPlanetOPerson: { tipo: "Person" }
 		},
 		actions: {
 			loadDataPersonsYPlanets: () => {
 				/* Las personas */
+				console.log("entrandoooos");
+
 				fetch(process.env.BACKEND_URL + "/persons")
 					.then(resp => resp.json())
 					.then(resp => {
@@ -110,7 +114,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			signupData: e => {
 				let dataCapt = { [e.target.name]: e.target.value };
 				setStore({ signupData: { ...getStore().signupData, ...dataCapt } });
-				/* setStore({ loginData: { ...getStore().loginData, ...emailypass } }); */
 			},
 			signup: () => {
 				let emailypass = { email: getStore().signupData.email, password: getStore().signupData.password };
@@ -224,6 +227,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(getStore().planets2);
 				}
 			},
+			PostearCard: () => {
+				let tipo;
+				if (getStore().postPlanetOPerson.tipo == "Planet") {
+					tipo = "/planet";
+				} else {
+					tipo = "/person";
+				}
+				fetch(process.env.BACKEND_URL + tipo, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(getStore().datapostcard)
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						getActions().loadDataPersonsYPlanets();
+
+						console.log(resp);
+					})
+					.catch(error => console.log(error));
+			},
 			verMas: numID => {
 				numID += 1;
 				setStore({ cambio: true });
@@ -232,6 +257,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			verMas2: numID => {
 				numID += 1;
 				setStore({ cambio: false });
+			},
+			AddPostCard: e => {
+				let dataPostCard = { [e.target.name]: e.target.value };
+				setStore({ datapostcard: { ...getStore().datapostcard, ...dataPostCard } });
+			},
+			TipoPlanetOperson: planetOperson => {
+				/* getActions().login(); */
+				setStore({ postPlanetOPerson: { tipo: planetOperson } });
 			}
 		}
 	};

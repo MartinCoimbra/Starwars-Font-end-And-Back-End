@@ -5,6 +5,7 @@ import "../../styles/demo.scss";
 
 export const Addpost = () => {
 	const { store, actions } = useContext(Context);
+	const [planetOperson, setPlanetOperson] = useState("Person");
 
 	return (
 		<div className="container">
@@ -15,8 +16,30 @@ export const Addpost = () => {
 					alt="..."
 				/>
 				<div className="card-img-overlay login col-12">
-					<h3 className="card-title text-center col-5 mt-5 mb-5">Add Post</h3>
+					<h3 className="card-title text-center col-5 mt-2 mb-3">
+						Add Post <br /> {planetOperson}{" "}
+					</h3>
 					<div>
+						<div className="row">
+							<div className="col-4 mb-3">
+								<button
+									className="btn btn-primary mr-3"
+									onClick={() => {
+										setPlanetOperson("Person");
+										actions.TipoPlanetOperson("Person");
+									}}>
+									Person
+								</button>
+								<button
+									className="btn btn-primary"
+									onClick={() => {
+										setPlanetOperson("Planet");
+										actions.TipoPlanetOperson("Planet");
+									}}>
+									Planet
+								</button>
+							</div>
+						</div>
 						<div className="row">
 							<div className="col-2">
 								<p className="card-text text-left">Name:</p>
@@ -24,66 +47,82 @@ export const Addpost = () => {
 									name="name"
 									type="text"
 									className="form-control"
-									placeholder="name"
+									placeholder="Name"
 									aria-label="name"
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 							<div className="col-2">
-								<p className="card-text text-left">birth_year:</p>
+								<p className="card-text text-left">
+									{planetOperson == "Person" ? "Birth_year:" : "Climate:"}
+								</p>
 								<input
-									name="birth_year"
+									name={planetOperson == "Person" ? "birth_year" : "climate"}
 									type="text"
 									className="form-control"
-									placeholder="birth_year"
-									aria-label="birth_year"
+									placeholder={planetOperson == "Person" ? "Birth_year:" : "Climate:"}
+									aria-label={planetOperson == "Person" ? "birth_year:" : "climate:"}
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 							<div className="col-2">
-								<p className="card-text text-left">gender:</p>
+								<p className="card-text text-left">
+									{planetOperson == "Person" ? "Gender:" : "Population"}
+								</p>
 								<input
-									name="gender"
+									name={planetOperson == "Person" ? "gender" : "population"}
 									type="text"
 									className="form-control"
-									placeholder="gender"
-									aria-label="gender"
+									placeholder={planetOperson == "Person" ? "Gender:" : "Population"}
+									aria-label={planetOperson == "Person" ? "gender:" : "population"}
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 						</div>
 						<div className="row">
 							<div className="col-2">
-								<p className="card-text text-left">height:</p>
+								<p className="card-text text-left">
+									{planetOperson == "Person" ? "Height:" : "Orbital_period:"}
+								</p>
 								<input
-									name="height"
+									name={planetOperson == "Person" ? "height" : "orbital_period"}
 									type="text"
 									className="form-control"
-									placeholder="height"
-									aria-label="height"
+									placeholder={planetOperson == "Person" ? "Height:" : "Orbital_period:"}
+									aria-label={planetOperson == "Person" ? "height:" : "orbital_period:"}
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 							<div className="col-2">
-								<p className="card-text text-left">skin_color:</p>
+								<p className="card-text text-left">
+									{planetOperson == "Person" ? "Skin_color:" : "Rotation_period"}
+								</p>
 								<input
-									name="skin_color"
+									name={planetOperson == "Person" ? "skin_color" : "rotation_period"}
 									type="text"
 									className="form-control"
-									placeholder="skin_color"
-									aria-label="skin_color"
+									placeholder={planetOperson == "Person" ? "Skin_color:" : "Rotation_period"}
+									aria-label={planetOperson == "Person" ? "skin_color:" : "rotation_period"}
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 							<div className="col-2">
-								<p className="card-text text-left">hair_color:</p>
+								<p className="card-text text-left">
+									{planetOperson == "Person" ? "Hair_color:" : "Diamete"}
+								</p>
 								<input
-									name="hair_color"
+									name={planetOperson == "Person" ? "hair_color" : "diameter"}
 									type="text"
 									className="form-control"
-									placeholder="hair_color"
-									aria-label="hair_color"
+									placeholder={planetOperson == "Person" ? "Hair_color:" : "Diameter"}
+									aria-label={planetOperson == "Person" ? "hair_color:" : "diameter"}
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 						</div>
@@ -97,18 +136,29 @@ export const Addpost = () => {
 									placeholder="url"
 									aria-label="foto"
 									aria-describedby="basic-addon1"
+									onChange={actions.AddPostCard}
 								/>
 							</div>
 							<div className="col-5 mt-2">
 								<p className="card-text text-left">Descripcion:</p>
-								<textarea className="form-control" id="exampleFormControlTextarea1" rows="6" />
+								<textarea
+									name="descripcion"
+									onChange={actions.AddPostCard}
+									className="form-control"
+									id="exampleFormControlTextarea1"
+									rows="6"
+								/>
 							</div>
 						</div>
 					</div>
 
-					<Link to="/">
-						<button className="btn btn-success mr-4">Add post</button>
-					</Link>
+					<button
+						onClick={() => {
+							actions.PostearCard();
+						}}
+						className="btn btn-success mr-4">
+						Add post
+					</button>
 
 					<Link to="/">
 						<button className="btn btn-secondary">Cancel</button>
