@@ -244,7 +244,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(resp => {
 						getActions().loadDataPersonsYPlanets();
-
 						console.log(resp);
 					})
 					.catch(error => console.log(error));

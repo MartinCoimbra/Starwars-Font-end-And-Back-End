@@ -152,13 +152,14 @@ export const Addpost = () => {
 						</div>
 					</div>
 
-					<button
+					<Link
+						className="btn btn-success mr-4"
 						onClick={() => {
 							actions.PostearCard();
 						}}
-						className="btn btn-success mr-4">
+						to="/">
 						Add post
-					</button>
+					</Link>
 
 					<Link to="/">
 						<button className="btn btn-secondary">Cancel</button>
