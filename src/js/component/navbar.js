@@ -48,7 +48,7 @@ export const Navbar = props => {
 												<p className="m-0">{element.name}</p>
 												<i
 													onClick={() => {
-														actions.setBorrarIDElement(element.id);
+														actions.setBorrarIDElement(element.id, element.tipo);
 													}}
 													className="far fa-trash-alt mt-1 oculOAP text-danger"
 												/>

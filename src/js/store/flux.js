@@ -64,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({
 								favoritos: [
 									...getStore().favoritos,
-									{ id: element.postplanets.id, name: element.postplanets.name }
+									{ id: element.postplanets.id, name: element.postplanets.name, tipo: "planet" }
 								]
 							});
 						});
@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({
 								favoritos: [
 									...getStore().favoritos,
-									{ id: element.postpersons.id, name: element.postpersons.name }
+									{ id: element.postpersons.id, name: element.postpersons.name, tipo: "person" }
 								]
 							});
 						});
@@ -168,11 +168,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			/* Borramos elemento (lo usamos en el nav bar) */
-			setBorrarIDElement: idelement => {
-				console.log(idelement);
-				console.log(idelement);
-				console.log(idelement);
-				fetch(process.env.BACKEND_URL + "/user/favoritos/person/" + idelement, {
+			setBorrarIDElement: (idelement, tipo) => {
+				/* con tipo identificamos que tipo es si planet o person */
+				let tipoAux;
+				tipo === "planet" ? (tipoAux = "planet") : (tipoAux = "person");
+				console.log(tipo);
+				fetch(process.env.BACKEND_URL + "/user/favoritos/" + tipoAux + "/" + idelement, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json",
