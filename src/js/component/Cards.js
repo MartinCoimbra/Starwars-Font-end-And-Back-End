@@ -28,6 +28,11 @@ export function Cards(props) {
 					<Link to={"/single/" + props.posicion}>
 						<button
 							onClick={() => {
+								if (props.planetas == false) {
+									actions.verMas2(props.posicion);
+								} else {
+									actions.verMas(props.posicion);
+								}
 								actions.posicionFlux(props.posicion);
 							}}
 							className="btn btn-outline-dark">

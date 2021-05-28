@@ -186,11 +186,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log(error));
 			},
+			/* Log out */
 			actionRemove: () => {
 				localStorage.removeItem("token");
 				setStore({ logeado: false });
 				setStore({ infoProfile: {} });
 				setStore({ favoritos: [] });
+			},
+			/* Verificar si hay publicaciones para no estar publicando 1 * 1 */
+			verificarSihayPlanetOPerson: () => {
+				/* Si los personajes estan vacios, publicalos */
+				if (getStore().personas2.length === 0) {
+					fetch(process.env.BACKEND_URL + "/planet", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+							/* Authorization: localStorage.getItem("token") */
+						},
+						body: JSON.stringify({
+							name: "Tatooine",
+							descripcion:
+								"This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wi",
+							climate: "arid",
+							population: "200000",
+							orbital_period: "304",
+							rotation_period: "23",
+							diameter: "10465",
+							foto: "https://img.unocero.com/2020/01/nasa-descubre-planeta-tatooine.jpg"
+						})
+					})
+						.then(resp => resp.json())
+						.then(resp => console.log("ENTREEEE"))
+						.catch(error => console.log(error));
+				}
+				/* Si los planetas estan vacios, publicalos */
+				if (getStore().planets2.length === 0) {
+					console.log(getStore().planets2);
+				}
+			},
+			verMas: numID => {
+				numID += 1;
+				setStore({ cambio: true });
+			},
+			/* Planetas */
+			verMas2: numID => {
+				numID += 1;
+				setStore({ cambio: false });
 			}
 		}
 	};
