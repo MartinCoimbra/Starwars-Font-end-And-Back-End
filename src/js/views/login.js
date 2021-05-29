@@ -44,12 +44,12 @@ export const Login = () => {
 							onClick={() => {
 								actions.login();
 							}}
-							className="btn btn-primary mr-2">
+							className="btn btn-outline-warning mr-2">
 							Login
 							{store.logeado == true ? <Redirect to="/" /> : ""}
 						</button>
 						<Link to="/">
-							<button className="btn btn-secondary">Cancel</button>
+							<button className="btn btn-outline-secondary">Cancel</button>
 						</Link>
 					</div>
 				</div>

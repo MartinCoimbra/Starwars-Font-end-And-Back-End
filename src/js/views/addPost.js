@@ -6,6 +6,8 @@ import "../../styles/demo.scss";
 export const Addpost = () => {
 	const { store, actions } = useContext(Context);
 	const [planetOperson, setPlanetOperson] = useState("Person");
+	const [elegir, setElegir] = useState(true);
+	const [click, setClick] = useState(false);
 
 	return (
 		<div className="container">
@@ -23,20 +25,24 @@ export const Addpost = () => {
 						<div className="row">
 							<div className="col-4 mb-3">
 								<button
-									className="btn btn-primary mr-3"
+									className="btn btn-outline-primary mr-3"
 									onClick={() => {
 										setPlanetOperson("Person");
 										actions.TipoPlanetOperson("Person");
+										setElegir(false);
+										setClick(true);
 									}}>
-									Person
+									🤺Character🤺
 								</button>
 								<button
-									className="btn btn-primary"
+									className="btn btn-outline-primary"
 									onClick={() => {
 										setPlanetOperson("Planet");
 										actions.TipoPlanetOperson("Planet");
+										setElegir(false);
+										setClick(true);
 									}}>
-									Planet
+									🌏Planet🌏
 								</button>
 							</div>
 						</div>
@@ -44,6 +50,7 @@ export const Addpost = () => {
 							<div className="col-2">
 								<p className="card-text text-left">Name:</p>
 								<input
+									disabled={elegir}
 									name="name"
 									type="text"
 									className="form-control"
@@ -64,6 +71,7 @@ export const Addpost = () => {
 									placeholder={planetOperson == "Person" ? "Birth_year:" : "Climate:"}
 									aria-label={planetOperson == "Person" ? "birth_year:" : "climate:"}
 									aria-describedby="basic-addon1"
+									disabled={elegir}
 									onChange={actions.AddPostCard}
 								/>
 							</div>
@@ -77,6 +85,7 @@ export const Addpost = () => {
 									className="form-control"
 									placeholder={planetOperson == "Person" ? "Gender:" : "Population"}
 									aria-label={planetOperson == "Person" ? "gender:" : "population"}
+									disabled={elegir}
 									aria-describedby="basic-addon1"
 									onChange={actions.AddPostCard}
 								/>
@@ -94,6 +103,7 @@ export const Addpost = () => {
 									placeholder={planetOperson == "Person" ? "Height:" : "Orbital_period:"}
 									aria-label={planetOperson == "Person" ? "height:" : "orbital_period:"}
 									aria-describedby="basic-addon1"
+									disabled={elegir}
 									onChange={actions.AddPostCard}
 								/>
 							</div>
@@ -108,6 +118,7 @@ export const Addpost = () => {
 									placeholder={planetOperson == "Person" ? "Skin_color:" : "Rotation_period"}
 									aria-label={planetOperson == "Person" ? "skin_color:" : "rotation_period"}
 									aria-describedby="basic-addon1"
+									disabled={elegir}
 									onChange={actions.AddPostCard}
 								/>
 							</div>
@@ -122,6 +133,7 @@ export const Addpost = () => {
 									placeholder={planetOperson == "Person" ? "Hair_color:" : "Diameter"}
 									aria-label={planetOperson == "Person" ? "hair_color:" : "diameter"}
 									aria-describedby="basic-addon1"
+									disabled={elegir}
 									onChange={actions.AddPostCard}
 								/>
 							</div>
@@ -136,6 +148,7 @@ export const Addpost = () => {
 									placeholder="url"
 									aria-label="foto"
 									aria-describedby="basic-addon1"
+									disabled={elegir}
 									onChange={actions.AddPostCard}
 								/>
 							</div>
@@ -145,6 +158,7 @@ export const Addpost = () => {
 									name="descripcion"
 									onChange={actions.AddPostCard}
 									className="form-control"
+									disabled={elegir}
 									id="exampleFormControlTextarea1"
 									rows="6"
 								/>
@@ -153,16 +167,16 @@ export const Addpost = () => {
 					</div>
 
 					<Link
-						className="btn btn-success mr-4"
+						className="btn btn-outline-success mr-4"
 						onClick={() => {
 							actions.PostearCard();
 						}}
 						to="/">
-						Add post
+						✅ Add post ✅
 					</Link>
 
 					<Link to="/">
-						<button className="btn btn-secondary">Cancel</button>
+						<button className="btn btn-outline-danger">🚫Cancel🚫</button>
 					</Link>
 				</div>
 			</div>

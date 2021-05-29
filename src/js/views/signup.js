@@ -13,7 +13,7 @@ export const Signup = () => {
 		<div className="container">
 			<div className="card bg-dark text-white">
 				<img
-					src="https://p4.wallpaperbetter.com/wallpaper/139/978/356/general-grievous-in-star-wars-battlefront-ii-5k-wallpaper-preview.jpg"
+					src="http://www.jaredaxelrod.com/wp-content/uploads/2019/06/BleakHotHummingbird-size_restricted.gif"
 					className="card-img"
 					alt="..."
 				/>
@@ -72,17 +72,17 @@ export const Signup = () => {
 						</div>
 					</div>
 
-					<div className="text-center">
+					<div className="text-center pt-4">
 						<button
 							onClick={() => {
 								actions.signup();
 							}}
-							className="btn btn-success mr-2">
+							className="btn btn-outline-success btn-lg mr-5">
 							Sign up
 							{store.logeado == true ? <Redirect to="/" /> : ""}
 						</button>
 						<Link to="/">
-							<button className="btn btn-secondary">Cancel</button>
+							<button className="btn btn-outline-secondary btn-lg">Cancel</button>
 						</Link>
 					</div>
 				</div>
